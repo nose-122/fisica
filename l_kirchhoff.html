@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Ley de Kirchhoff</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Ley de Kirchhoff</h1>
+        <a href="index.html">Volver a la página principal</a>
+        
+        <section id="kcl" class="card">
+            <h2>Ley de Corrientes de Kirchhoff (KCL)</h2>
+            <p>Fórmula: ΣI (entrante) = ΣI (saliente)</p>
+            <label for="kclEntrantes">Corrientes Entrantes (A) (separadas por comas):</label>
+            <input type="text" id="kclEntrantes" placeholder="Ej: 2, 3, 1.5">
+            <label for="kclSalientes">Corrientes Salientes (A) (separadas por comas):</label>
+            <input type="text" id="kclSalientes" placeholder="Ej: 1, 2.5, 3">
+            <button onclick="calculateKCL()">Calcular</button>
+            <button onclick="clearKCL()">Limpiar</button>
+            <p id="kclResult"></p>
+        </section>
+        
+        <section id="kvl" class="card">
+            <h2>Ley de Voltajes de Kirchhoff (KVL)</h2>
+            <p>Fórmula: ΣV = 0</p>
+            <label for="kvlVoltajes">Voltajes (V) (separados por comas):</label>
+            <input type="text" id="kvlVoltajes" placeholder="Ej: 5, -2, -3">
+            <button onclick="calculateKVL()">Calcular</button>
+            <button onclick="clearKVL()">Limpiar</button>
+            <p id="kvlResult"></p>
+        </section>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

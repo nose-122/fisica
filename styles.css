@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(i/cbtis.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-image: url(i/fisica.jpg);
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: antiquewhite;
+}
+
+.card {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #d6c7c7;
+    text-align: center;
+}
+
+.law-card {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    display: flex; 
+    align-items: center; 
+}
+
+.law-card h2 {
+    margin-right: 20px;
+}
+.container a {
+    color: aquamarine;
+}
+
+.law-card img {
+    max-width: 200px;
+}
+
+.law-card button {
+    margin-left: auto; 
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: white;
+    cursor: pointer;
+}
+
+.law-card button:hover {
+    opacity: 0.9;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input {
+    width: calc(100% - 24px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #a09c93;
+    color: white;
+    cursor: pointer;
+}
+
+button:last-child {
+    background-color: #6c757d;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+p {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#ohmFormula, #kirchhoffFormula, #faradayFormula, #maxwellFormula {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 10px;
+}

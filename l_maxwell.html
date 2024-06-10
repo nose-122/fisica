@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Leyes de Maxwell</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Leyes de Maxwell</h1>
+        <a href="index.html">Volver a la página principal</a>
+        
+        <section id="gaussElectricIntegral" class="card">
+            <h2>Ley de Gauss para el Campo Eléctrico (Forma Integral)</h2>
+            <p>Fórmula: ∮ E · dA = Q / ε₀</p>
+            <label for="charge">Carga (Q):</label>
+            <input type="number" id="charge">
+            <label for="epsilon0">Permisividad del vacío (ε₀):</label>
+            <input type="number" id="epsilon0" value="8.85e-12">
+            <button onclick="calculateGaussElectricIntegral()">Calcular</button>
+            <button onclick="clearGaussElectricIntegral()">Limpiar</button>
+            <p id="gaussElectricIntegralResult"></p>
+        </section>
+        
+        <section id="gaussElectricDifferential" class="card">
+            <h2>Ley de Gauss para el Campo Eléctrico (Forma Diferencial)</h2>
+            <p>Fórmula: ∇ · E = ρ / ε₀</p>
+            <label for="rho">Densidad de carga (ρ):</label>
+            <input type="number" id="rho">
+            <label for="epsilon0Diff">Permisividad del vacío (ε₀):</label>
+            <input type="number" id="epsilon0Diff" value="8.85e-12">
+            <button onclick="calculateGaussElectricDifferential()">Calcular</button>
+            <button onclick="clearGaussElectricDifferential()">Limpiar</button>
+            <p id="gaussElectricDifferentialResult"></p>
+        </section>
+        
+        <section id="gaussMagneticIntegral" class="card">
+            <h2>Ley de Gauss para el Campo Magnético (Forma Integral)</h2>
+            <p>Fórmula: ∮ B · dA = 0</p>
+            <p>El flujo magnético a través de una superficie cerrada es siempre cero.</p>
+        </section>
+        
+        <section id="gaussMagneticDifferential" class="card">
+            <h2>Ley de Gauss para el Campo Magnético (Forma Diferencial)</h2>
+            <p>Fórmula: ∇ · B = 0</p>
+            <p>La divergencia del campo magnético es siempre cero.</p>
+        </section>
+        
+        <section id="ampereMaxwellIntegral" class="card">
+            <h2>Ley de Ampère-Maxwell (Forma Integral)</h2>
+            <p>Fórmula: ∮ B · dl = μ₀(I + ε₀ dΦE/dt)</p>
+            <label for="current">Corriente (I):</label>
+            <input type="number" id="current">
+            <label for="epsilon0Ampere">Permisividad del vacío (ε₀):</label>
+            <input type="number" id="epsilon0Ampere" value="8.85e-12">
+            <label for="dPhiE">Cambio del flujo eléctrico (dΦE/dt):</label>
+            <input type="number" id="dPhiE">
+            <label for="mu0">Permeabilidad del vacío (μ₀):</label>
+            <input type="number" id="mu0" value="1.2566370614e-6">
+            <button onclick="calculateAmpereMaxwellIntegral()">Calcular</button>
+            <button onclick="clearAmpereMaxwellIntegral()">Limpiar</button>
+            <p id="ampereMaxwellIntegralResult"></p>
+        </section>
+        
+        <section id="ampereMaxwellDifferential" class="card">
+            <h2>Ley de Ampère-Maxwell (Forma Diferencial)</h2>
+            <p>Fórmula: ∇ × B = μ₀ (J + ε₀ ∂E/∂t)</p>
+            <label for="currentDensity">Densidad de corriente (J):</label>
+            <input type="number" id="currentDensity">
+            <label for="epsilon0DiffAmpere">Permisividad del vacío (ε₀):</label>
+            <input type="number" id="epsilon0DiffAmpere" value="8.85e-12">
+            <label for="dE">Cambio del campo eléctrico (∂E/∂t):</label>
+            <input type="number" id="dE">
+            <label for="mu0Diff">Permeabilidad del vacío (μ₀):</label>
+            <input type="number" id="mu0Diff" value="1.2566370614e-6">
+            <button onclick="calculateAmpereMaxwellDifferential()">Calcular</button>
+            <button onclick="clearAmpereMaxwellDifferential()">Limpiar</button>
+            <p id="ampereMaxwellDifferentialResult"></p>
+        </section>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
