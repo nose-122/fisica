@@ -103,7 +103,10 @@ p {
     margin-top: 10px;
     font-weight: bold;
 }
-
+.card img {
+    max-width: 100%;
+    height: auto;
+}
 #ohmFormula, #kirchhoffFormula, #faradayFormula, #maxwellFormula {
     font-style: italic;
     color: #555;
