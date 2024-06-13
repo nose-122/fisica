@@ -37,25 +37,41 @@ function cleanInput(input) {
 }
 
 function calculateKCL() {
-    const kclEntrantes = cleanInput(document.getElementById('kclEntrantes').value).split(',').map(Number);
-    const kclSalientes = cleanInput(document.getElementById('kclSalientes').value).split(',').map(Number);
+    const tipoCircuito = document.querySelector('input[name="tipo-circuito"]:checked').value;
+    const resistencias = cleanInput(document.getElementById('resistencias').value).split(',').map(Number);
 
-    const sumaEntrantes = kclEntrantes.reduce((a, b) => a + b, 0);
-    const sumaSalientes = kclSalientes.reduce((a, b) => a + b, 0);
+    let resistenciaTotal, result;
 
-    let result = '';
-    if (sumaEntrantes === sumaSalientes) {
-        result = `La ley de corrientes de Kirchhoff se cumple: ΣI (entrante) = ΣI (saliente) = ${sumaEntrantes.toFixed(2)} A`;
-    } else {
-        result = `La ley de corrientes de Kirchhoff no se cumple: ΣI (entrante) = ${sumaEntrantes.toFixed(2)} A, ΣI (saliente) = ${sumaSalientes.toFixed(2)} A`;
+    if (tipoCircuito === 'serie') {
+        resistenciaTotal = calcularResistenciaSerie(resistencias);
+        result = `Resistencia total en serie: ${resistenciaTotal.toFixed(2)} Ω`;
+    } else if (tipoCircuito === 'paralelo') {
+        resistenciaTotal = calcularResistenciaParalelo(resistencias);
+        result = `Resistencia total en paralelo: ${resistenciaTotal.toFixed(2)} Ω`;
     }
 
     document.getElementById('kclResult').innerText = result;
 }
 
+function calcularResistenciaSerie(resistencias) {
+    let resistenciaTotal = 0;
+    resistencias.forEach(function(resistencia) {
+        resistenciaTotal += resistencia;
+    });
+    return resistenciaTotal;
+}
+
+function calcularResistenciaParalelo(resistencias) {
+    let resistenciaTotal = 0;
+    resistencias.forEach(function(resistencia) {
+        resistenciaTotal += 1 / resistencia;
+    });
+    resistenciaTotal = 1 / resistenciaTotal;
+    return resistenciaTotal;
+}
+
 function clearKCL() {
-    document.getElementById('kclEntrantes').value = '';
-    document.getElementById('kclSalientes').value = '';
+    document.getElementById('resistencias').value = '';
     document.getElementById('kclResult').innerText = '';
 }
 
@@ -71,6 +87,11 @@ function calculateKVL() {
     }
 
     document.getElementById('kvlResult').innerText = result;
+}
+
+function clearKVL() {
+    document.getElementById('kvlVoltajes').value = '';
+    document.getElementById('kvlResult').innerText = '';
 }
 
 function clearKVL() {
