@@ -37,42 +37,20 @@ function cleanInput(input) {
 }
 
 function calculateKCL() {
-    const tipoCircuito = document.querySelector('input[name="tipo-circuito"]:checked').value;
-    const resistencias = cleanInput(document.getElementById('resistencias').value).split(',').map(Number);
+    const kclEntrantes = cleanInput(document.getElementById('kclEntrantes').value).split(',').map(Number);
+    const kclSalientes = cleanInput(document.getElementById('kclSalientes').value).split(',').map(Number);
 
-    let resistenciaTotal, result;
+    const sumaEntrantes = kclEntrantes.reduce((a, b) => a + b, 0);
+    const sumaSalientes = kclSalientes.reduce((a, b) => a + b, 0);
 
-    if (tipoCircuito === 'serie') {
-        resistenciaTotal = calcularResistenciaSerie(resistencias);
-        result = `Resistencia total en serie: ${resistenciaTotal.toFixed(2)} Ω`;
-    } else if (tipoCircuito === 'paralelo') {
-        resistenciaTotal = calcularResistenciaParalelo(resistencias);
-        result = `Resistencia total en paralelo: ${resistenciaTotal.toFixed(2)} Ω`;
+    let result = '';
+    if (sumaEntrantes === sumaSalientes) {
+        result = `La ley de corrientes de Kirchhoff se cumple: ΣI (entrante) = ΣI (saliente) = ${sumaEntrantes.toFixed(2)} A`;
+    } else {
+        result = `La ley de corrientes de Kirchhoff no se cumple: ΣI (entrante) = ${sumaEntrantes.toFixed(2)} A, ΣI (saliente) = ${sumaSalientes.toFixed(2)} A`;
     }
 
     document.getElementById('kclResult').innerText = result;
-}
-
-function calcularResistenciaSerie(resistencias) {
-    let resistenciaTotal = 0;
-    resistencias.forEach(function(resistencia) {
-        resistenciaTotal += resistencia;
-    });
-    return resistenciaTotal;
-}
-
-function calcularResistenciaParalelo(resistencias) {
-    let resistenciaTotal = 0;
-    resistencias.forEach(function(resistencia) {
-        resistenciaTotal += 1 / resistencia;
-    });
-    resistenciaTotal = 1 / resistenciaTotal;
-    return resistenciaTotal;
-}
-
-function clearKCL() {
-    document.getElementById('resistencias').value = '';
-    document.getElementById('kclResult').innerText = '';
 }
 
 function calculateKVL() {
@@ -89,14 +67,46 @@ function calculateKVL() {
     document.getElementById('kvlResult').innerText = result;
 }
 
-function clearKVL() {
-    document.getElementById('kvlVoltajes').value = '';
-    document.getElementById('kvlResult').innerText = '';
+function calculateKCLParalelo() {
+    const kclEntrantes = cleanInput(document.getElementById('kclEntrantesParalelo').value).split(',').map(Number);
+    const kclSalientes = cleanInput(document.getElementById('kclSalientesParalelo').value).split(',').map(Number);
+
+    const sumaEntrantes = kclEntrantes.reduce((a, b) => a + b, 0);
+    const sumaSalientes = kclSalientes.reduce((a, b) => a + b, 0);
+
+    let result = '';
+    if (sumaEntrantes === sumaSalientes) {
+        result = `La ley de corrientes de Kirchhoff en paralelo se cumple: ΣI (entrante) = ΣI (saliente) = ${sumaEntrantes.toFixed(2)} A`;
+    } else {
+        result = `La ley de corrientes de Kirchhoff en paralelo no se cumple: ΣI (entrante) = ${sumaEntrantes.toFixed(2)} A, ΣI (saliente) = ${sumaSalientes.toFixed(2)} A`;
+    }
+
+    document.getElementById('kclResultParalelo').innerText = result;
 }
 
-function clearKVL() {
-    document.getElementById('kvlVoltajes').value = '';
-    document.getElementById('kvlResult').innerText = '';
+function calculateKVLParalelo() {
+    const kvlVoltajes = cleanInput(document.getElementById('kvlVoltajesParalelo').value).split(',').map(Number);
+    const sumaVoltajes = kvlVoltajes.reduce((a, b) => a + b, 0);
+
+    let result = '';
+    if (sumaVoltajes === 0) {
+        result = `La ley de voltajes de Kirchhoff en paralelo se cumple: ΣV = 0 V`;
+    } else {
+        result = `La ley de voltajes de Kirchhoff en paralelo no se cumple: ΣV = ${sumaVoltajes.toFixed(2)} V`;
+    }
+
+    document.getElementById('kvlResultParalelo').innerText = result;
+}
+
+function clearKCLParalelo() {
+    document.getElementById('kclEntrantesParalelo').value = '';
+    document.getElementById('kclSalientesParalelo').value = '';
+    document.getElementById('kclResultParalelo').innerText = '';
+}
+
+function clearKVLParalelo() {
+    document.getElementById('kvlVoltajesParalelo').value = '';
+    document.getElementById('kvlResultParalelo').innerText = '';
 }
 
 function calculateFaraday() {
