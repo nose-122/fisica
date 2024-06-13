@@ -32,6 +32,28 @@
             <button onclick="clearKVL()">Limpiar</button>
             <p id="kvlResult"></p>
         </section>
+        
+        <section id="kclParalelo" class="card">
+            <h2>Ley de Corrientes de Kirchhoff en Paralelo (KCL)</h2>
+            <p>Fórmula: ΣI (entrante) = ΣI (saliente)</p>
+            <label for="kclEntrantesParalelo">Corrientes Entrantes (A) (separadas por comas):</label>
+            <input type="text" id="kclEntrantesParalelo" placeholder="Ej: 2, 3, 1.5">
+            <label for="kclSalientesParalelo">Corrientes Salientes (A) (separadas por comas):</label>
+            <input type="text" id="kclSalientesParalelo" placeholder="Ej: 1, 2.5, 3">
+            <button onclick="calculateKCLParalelo()">Calcular</button>
+            <button onclick="clearKCLParalelo()">Limpiar</button>
+            <p id="kclResultParalelo"></p>
+        </section>
+        
+        <section id="kvlParalelo" class="card">
+            <h2>Ley de Voltajes de Kirchhoff en Paralelo (KVL)</h2>
+            <p>Fórmula: ΣV = 0</p>
+            <label for="kvlVoltajesParalelo">Voltajes (V) (separados por comas):</label>
+            <input type="text" id="kvlVoltajesParalelo" placeholder="Ej: 5, -2, -3">
+            <button onclick="calculateKVLParalelo()">Calcular</button>
+            <button onclick="clearKVLParalelo()">Limpiar</button>
+            <p id="kvlResultParalelo"></p>
+        </section>
     </div>
     <script src="scripts.js"></script>
 </body>
